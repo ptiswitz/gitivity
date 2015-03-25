@@ -1,0 +1,4 @@
+.vagrant
+node_modules
+app/components
+app/styles/css

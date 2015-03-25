@@ -1,0 +1,19 @@
+{
+  "name": "gitivity",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ptiswitz/gitivity",
+  "description": "Git repositories activity search engine",
+  "main": "app/index.html",
+  "authors": [
+    "Julien Léger"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ]
+}

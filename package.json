@@ -1,0 +1,25 @@
+{
+  "name": "gitivity",
+  "version": "1.0.0",
+  "description": "Git repositories activity search engine",
+  "main": "app/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ptiswitz/gitivity.git"
+  },
+  "author": "Julien Léger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ptiswitz/gitivity/issues"
+  },
+  "homepage": "https://github.com/ptiswitz/gitivity",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
