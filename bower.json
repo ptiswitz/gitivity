@@ -15,5 +15,9 @@
     "app/components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "mithril": "~0.1.30",
+    "bourbon": "~4.2.1"
+  }
 }

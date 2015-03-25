@@ -1,0 +1,21 @@
+$bd-default-input: transparent;
+$bg-default-input: $grey-dark-two;
+$txt-default-input: $grey-medium-one;
+
+input {
+  &[type=search],
+  &[type=text] {
+    @include border-radius(5px);
+    background-color: $bg-default-input;
+    border: 2px solid $bd-default-input;
+    box-sizing: border-box;
+    color: $txt-default-input;
+    font-size: em(16);
+    padding: 5px 10px;
+    height: 35px;
+
+    @include placeholder {
+      color: $txt-default-input;
+    }
+  }
+}
