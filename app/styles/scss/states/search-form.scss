@@ -1,0 +1,17 @@
+$bg-search-form-icon-focus: $green-medium-one;
+
+.search-form {
+  > input[type=search] {
+    &:focus {
+      & + label {
+        &:after {
+          @include transform(translate3d(0, 0, 0));
+        }
+
+        > .icon-search {
+          color: $bg-search-form-icon-focus;
+        }
+      }
+    }
+  }
+}

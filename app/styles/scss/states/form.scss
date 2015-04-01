@@ -1,12 +1,11 @@
-$bd-default-input-focus: $green-medium-one;
 $txt-default-input-focus: $green-medium-one;
 
 input {
   &[type=search],
   &[type=text] {
     &:focus {
-      border-color: $bd-default-input-focus;
       color: $txt-default-input-focus;
+      outline: none;
 
       @include placeholder {
         color: $txt-default-input-focus;
