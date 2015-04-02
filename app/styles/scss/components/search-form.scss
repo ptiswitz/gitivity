@@ -1,40 +1,90 @@
 $bg-search-form-icon: $grey-medium-one;
+$bg-search-form-result: $white-medium-one;
 $bd-search-form-input: $green-medium-one;
+$txt-search-form-result-title: $grey-dark-one;
+$txt-search-form-result-desc: $grey-dark-two;
+$txt-search-form-result-language: $red-medium-one;
 
 .search-form {
-  position: relative;
-
-  > label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-
-    > .icon-search {
-      position: absolute;
-      top: 8px;
-      left: 10px;
-      color: $bg-search-form-icon;
-      font-size: modular-scale(1);
-    }
-
-    &:after {
-      @include transform(translate3d(-100%, 0, 0));
-      @include transition(transform .3s);
+  > .form-input {
+    position: relative;
+    
+    > label {
       position: absolute;
       top: 0;
       left: 0;
-      border-bottom: 4px solid $bd-search-form-input;
-      content: "";
+      overflow: hidden;
       width: 100%;
-      height: 100%;
+      height: calc(100%);
+
+      > .icon-search {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        z-index: 1;
+        color: $bg-search-form-icon;
+        font-size: modular-scale(1);
+      }
+
+      &:after {
+        @include transform(translate3d(-100%, 0, 0));
+        @include transition(transform .3s);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 4px solid $bd-search-form-input;
+        content: "";
+        width: 100%;
+        height: calc(100%);
+      }
+    }
+
+    > input[type=search] {
+      padding-left: 40px;
+      width: 100%;
     }
   }
 
-  > input[type=search] {
-    padding-left: 40px;
+  > .results {
+    margin: 20px 0 0;
+    padding: 0;
     width: 100%;
+
+    > .result {
+      @include transition(background-color .3s ease-out);
+      position: relative;
+      background-color: $bg-search-form-result;
+      cursor: pointer;
+      list-style: none;
+      overflow: hidden;
+      margin: 0;
+      padding: 20px 100px 20px 10px;
+      width: 100%;
+
+      > .name {
+        @include transition(color .3s ease-out);
+        color: $txt-search-form-result-title;
+        display: block;
+        font-family: $lato;
+        font-size: modular-scale(2);
+        margin-bottom: 10px;
+      }
+
+      > .desc {
+        @include transition(color .3s ease-out);
+        color: $txt-search-form-result-desc;
+        display: block;
+      }
+
+      > .language {
+        @include transition(color .2s ease-out .2);
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        color: $txt-search-form-result-language;
+        display: block;
+        font-size: modular-scale(0);
+      }
+    }
   }
 }

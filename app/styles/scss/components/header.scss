@@ -1,36 +1,18 @@
 $bg-header: $grey-dark-one;
 $bg-header-logo: $grey-dark-two;
 $txt-header-title: $green-medium-one;
-$txt-header-subtitle: $white-medium-one;
 
 header {
   background-color: $bg-header;
   padding: 40px 0;
 
-
   > .container {
-    @include outer-container;
-
     > h1 {
       color: $bg-header-logo;
       font-size: modular-scale(10);
       margin-top: 0;
       margin-bottom: 0;
       text-align: center;
-    }
-
-    > p {
-      @include span-columns(9);
-      @include shift(3);
-      color: $txt-header-subtitle;
-      font-size: modular-scale(2);
-      margin-top: 0;
-      margin-bottom: 60px;
-    }
-
-    > form {
-      @include span-columns(12);
-      @include omega;
     }
   }
 }

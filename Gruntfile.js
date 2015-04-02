@@ -46,6 +46,12 @@ module.exports = function(grunt) {
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
+      },
+      js: {
+        files: ['<%= project.app %>/scripts/**/*.js'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
       }
     }
   });

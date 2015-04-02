@@ -19,6 +19,7 @@
   "devDependencies": {
     "mithril": "~0.1.30",
     "bourbon": "~4.2.1",
-    "neat": "~1.7.2"
+    "neat": "~1.7.2",
+    "lodash": "~3.6.0"
   }
 }

@@ -1,15 +1,37 @@
 $bg-search-form-icon-focus: $green-medium-one;
+$bg-search-form-result-hover: $red-dark-one;
+$txt-search-form-result-hover: $white-medium-one;
 
 .search-form {
-  > input[type=search] {
-    &:focus {
-      & + label {
-        &:after {
-          @include transform(translate3d(0, 0, 0));
+  > .form-input {
+    > input[type=search] {
+      &:focus {
+        & + label {
+          &:after {
+            @include transform(translate3d(0, 0, 0));
+          }
+
+          > .icon-search {
+            color: $bg-search-form-icon-focus;
+          }
+        }
+      }
+    }
+  }
+
+  > .results {
+    > .result {
+      &:hover {
+        background-color: $bg-search-form-result-hover;
+
+        > .name,
+        > .desc,
+        > .language {
+          color: $txt-search-form-result-hover;
         }
 
-        > .icon-search {
-          color: $bg-search-form-icon-focus;
+        &:before {
+          @include transform(scale(1));
         }
       }
     }

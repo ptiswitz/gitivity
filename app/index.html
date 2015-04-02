@@ -8,17 +8,12 @@
         <link rel="stylesheet" href="/styles/css/style.css" type="text/css">
     </head>
     <body>
-        <header>
-            <div class="container">
-                <h1><span class="icon-github"></span></h1>
-                <form class="search-form">
-                    <input type="search" id="repository" name="repository" placeholder="eg. 'angular' or 'TryGhost/Ghost'">
-                    <label for="repository">
-                        <span class="icon-search"></span>
-                    </label>
-                </form>
-            </div>
-        </header>
-        <script type="text/javascript" src="/components/mithril/mithril.min.js"></script>
+        <script type="text/javascript" src="/components/lodash/lodash.js"></script>
+        <script type="text/javascript" src="/components/mithril/mithril.js"></script>
+
+        <script type="text/javascript" src="/scripts/common/models/repository.js"></script>
+        <script type="text/javascript" src="/scripts/typeahead/typeahead.js"></script>
+        <script type="text/javascript" src="/scripts/search/search.js"></script>
+        <script type="text/javascript" src="/scripts/app.js"></script>
     </body>
 </html>
