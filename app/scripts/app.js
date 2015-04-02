@@ -6,6 +6,7 @@ var app = app || {};
   m.route.mode = 'hash';
 
   m.route(document.body, '/search', {
-    '/search': app.search
+    '/search': app.search,
+    '/repo/:owner/:repo': app.repo
   });
 })(document, m, app);

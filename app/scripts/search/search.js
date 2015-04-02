@@ -31,12 +31,20 @@ var app = app || {};
             app.services.github.search(term).then(that.results);
           }
         };
+
+        this.onselect = function(item) {
+          m.route('/stats/' + item.fullName);
+        };
       }
     },
-    view: function() {
+    view: function(opts) {
         var vm = app.search.vm;
 
-        return m('header', [
+        opts = opts || {
+          class: 'standard'
+        };
+
+        return m('header', opts, [
           m('div', {
             class: 'container'
           }, [
@@ -50,7 +58,8 @@ var app = app || {};
             }, [
               vm.repositoryTypeahead.view({
                 data: vm.results,
-                onchange: vm.onchange
+                onchange: vm.onchange,
+                onselect: vm.onselect
               })
             ])
           ])

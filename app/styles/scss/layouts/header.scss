@@ -10,4 +10,18 @@ header {
       @include omega;
     }
   }
+
+  &.small {
+    min-height: 0;
+    
+    > .container {
+      > h1 {
+        @include span-columns(1);
+      }
+
+      > form {
+        @include span-columns(11);
+      }
+    }
+  }
 }

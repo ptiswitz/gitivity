@@ -51,7 +51,13 @@ var app = app || {};
         return elms.concat([
           m('ul.results', [
             ctrl.data().map(function(result) {
-              return m('li.result', [
+              return m('li.result', {
+                onclick: function() {
+                  if(ctrl.onselect) {
+                    ctrl.onselect(result);
+                  }
+                }
+              },[
                 m('span.name', result.fullName),
                 m('span.desc', result.description),
                 m('span.language', result.language)

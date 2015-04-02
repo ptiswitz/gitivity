@@ -15,4 +15,26 @@ header {
       text-align: center;
     }
   }
+
+  &.small {
+    padding: 10px 0;
+
+    > .container {
+      > h1 {
+        font-size: modular-scale(4);
+        text-align: left;
+      }
+
+      > form {
+        position: relative;
+        padding-top: 5px;
+
+        > ul {
+          position: absolute;
+          top: 45px;
+          left: 0;
+        }
+      }
+    }
+  }
 }
