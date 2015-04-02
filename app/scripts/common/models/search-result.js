@@ -1,8 +1,10 @@
 var app = app || {};
+app.models = app.models || {};
 
 (function(app) {
+  'use strict';
 
-  var Repository = function(data) {
+  var SearchResult = function(data) {
     this.id = data.id || 0;
     this.name = data.name || '';
     this.fullName = data.full_name || '';
@@ -12,5 +14,5 @@ var app = app || {};
     this.score = data.score || 0;
   };
 
-  app.Repository = Repository;
+  app.models.searchResult = SearchResult;
 })(app);

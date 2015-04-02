@@ -21,25 +21,15 @@ var app = app || {};
             m('span.icon-search')
           ])
         });
-        this.selectedRepository = m.prop('');
-        this.repositories = m.prop([]);
+        this.results = m.prop([]);
 
-        this.searchRepositories = function(term) {
-            if(term.length < 2) {
-              that.repositories([]);
-            }
-            else if(term.length % 2 === 0) {
-              m.request({
-                method: 'GET',
-                url: 'https://api.github.com/search/repositories?q=' + term
-              }).then(function(data) {
-                var repositories = _.sortByOrder(_.map(data.items, function(item) {
-                  return new app.Repository(item);
-                }), 'score', false);
-
-                return repositories;
-              }).then(that.repositories);
-            }
+        this.onchange = function(term) {
+          if(term.length < 2) {
+            that.results([]);
+          }
+          else if(term.length % 2 === 0) {
+            app.services.github.search(term).then(that.results);
+          }
         };
       }
     },
@@ -59,8 +49,8 @@ var app = app || {};
               class: 'search-form'
             }, [
               vm.repositoryTypeahead.view({
-                data: vm.repositories,
-                onchange: vm.searchRepositories
+                data: vm.results,
+                onchange: vm.onchange
               })
             ])
           ])
