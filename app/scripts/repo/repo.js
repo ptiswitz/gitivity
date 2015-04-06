@@ -38,10 +38,15 @@ var app = app || {};
         app.search.view({
           class: 'small'
         }),
+        m('section.infos', [
+          m('h2', vm.repository.fullName),
+          m('h3', vm.repository.description),
+          m('a.btn.btn-bookmark', 'Add to bookmark')
+        ]),
         m('section.contributors', [
           m('h2', 'Contributeurs'),
           m('div.container', [
-            _.map(vm.repository.contributors, function(user) {
+            _.map(vm.repository.getActivityByUser(), function(user) {
               return m('figure', [
                 m('img', {
                   src: user.avatar

@@ -13,6 +13,7 @@ app.models = app.models || {};
     this.url = '';
     this.owner = new app.models.user();
     this.contributors = [];
+    this.commits = [];
   };
 
   Repository.prototype.parseData = function(data) {
@@ -27,13 +28,48 @@ app.models = app.models || {};
   };
 
   Repository.prototype.setContributors = function(data) {
-
     this.contributors = _.map(data, function(contributor) {
       var user = new app.models.user();
       user.parseData(contributor);
 
       return user;
     });
+  };
+
+  Repository.prototype.setCommits = function(data) {
+    this.commits = _.map(data, function(rawCommit) {
+      var commit = new app.models.commit();
+      commit.parseData(rawCommit);
+
+      return commit;
+    });
+  };
+
+  Repository.prototype.getActivity = function() {
+    return _.countBy(this.commits, 'date');
+  };
+
+  Repository.prototype.getActivityByUser = function() {
+    var that = this;
+
+    return _.chain(that.contributors)
+            .map(function(contributor) {
+              return _.chain(contributor)
+                      .clone()
+                      .extend({
+                        'activity':  _.chain(that.commits)
+                                      .filter({author: contributor.login})
+                                      .countBy('date')
+                                      .value(),
+                        'contributionsToActivity': _.chain(that.commits)
+                                                    .filter({author: contributor.login})
+                                                    .value()
+                                                    .length
+                      })
+                      .value();
+            })
+            .sortByOrder('contributionsToActivity', false)
+            .value();
   };
 
   app.models.repository = Repository;
