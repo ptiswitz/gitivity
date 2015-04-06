@@ -1,4 +1,5 @@
 $txt-contributors-heading: $green-medium-one;
+$size-contributors-item: 180px 180px;
 
 .contributors {
   > h2 {
@@ -7,13 +8,18 @@ $txt-contributors-heading: $green-medium-one;
     font-size: modular-scale(3);
   }
 
-  > figure {
+  figure {
     position: relative;
     border-radius: 50%;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     overflow: hidden;
-    width: 220px;
-    height: 220px;
+    width: nth($size-contributors-item, 1);
+    height: nth($size-contributors-item, 2);
+
+    > img {
+      width: nth($size-contributors-item, 1);
+      height: nth($size-contributors-item, 2);
+    }
 
     > figcaption {
       @include transition(transform .3s);
@@ -25,10 +31,10 @@ $txt-contributors-heading: $green-medium-one;
       border-radius: 100%;
       color: $white-medium-one;
       font-size: modular-scale(2);
-      line-height: 220px;
+      line-height: nth($size-contributors-item, 2);
       text-align: center;
-      width: 220px;
-      height: 220px;
+      width: nth($size-contributors-item, 1);
+      height: nth($size-contributors-item, 2);
     }
 
     &:hover {
