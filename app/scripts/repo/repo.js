@@ -46,7 +46,7 @@ var app = app || {};
         m('section.contributors', [
           m('h2', 'Contributeurs'),
           m('div.container', [
-            _.map(vm.repository.getActivityByUser(), function(user) {
+            _.map(vm.repository.getActivityByContributor(), function(user) {
               return m('figure', [
                 m('img', {
                   src: user.avatar

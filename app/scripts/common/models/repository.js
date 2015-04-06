@@ -49,7 +49,7 @@ app.models = app.models || {};
     return _.countBy(this.commits, 'date');
   };
 
-  Repository.prototype.getActivityByUser = function() {
+  Repository.prototype.getActivityByContributor = function() {
     var that = this;
 
     return _.chain(that.contributors)
