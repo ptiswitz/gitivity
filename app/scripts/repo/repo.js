@@ -25,6 +25,7 @@ var app = app || {};
             }
 
             that.repository = repository;
+            that.repositoryTimeline = new app.timeline(that.repository.getActivity());
           });
         }
 
@@ -43,6 +44,7 @@ var app = app || {};
           m('h3', vm.repository.description),
           m('a.btn.btn-bookmark', 'Add to bookmark')
         ]),
+        vm.repositoryTimeline.view(),
         m('section.contributors', [
           m('h2', 'Contributeurs'),
           m('div.container', [
