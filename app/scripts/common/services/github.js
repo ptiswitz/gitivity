@@ -5,12 +5,12 @@ app.services = app.services || {};
   'use strict';
 
   var API_URL = 'https://api.github.com',
-      API_TOKEN = '7b4c0e685ee189c15c0cf785db17c43032cedcc8',
+      API_TOKEN = '9c6994b19c6619a877714e431ad1b41c4ef8c7ce',
       github = {
         search: function(term) {
           return m.request({
               method: 'GET',
-              url: API_URL + '/search/repositories?q=' + term + '&=api_token=' + API_TOKEN
+              url: API_URL + '/search/repositories?q=' + term + '&=access_token=' + API_TOKEN
             })
             .then(function(data) {
               var repositories = _.sortByOrder(_.map(data.items, function(item) {
@@ -25,22 +25,22 @@ app.services = app.services || {};
 
           return m.request({
             method: 'GET',
-            url: API_URL + '/repos/' + owner + '/' + repo
+            url: API_URL + '/repos/' + owner + '/' + repo + '?access_token=' + API_TOKEN
           }).then(function(data) {
             repository.parseData(data);
 
             return m.request({
                 method: 'GET',
-                url: API_URL + '/repos/' + owner + '/' + repo + '/contributors?per_page=100&api_token=' + API_TOKEN
+                url: API_URL + '/repos/' + owner + '/' + repo + '/contributors?per_page=100&access_token=' + API_TOKEN
             }).then(function(data) {
               repository.setContributors(data);
 
               return m.request({
                 method: 'GET',
-                url: API_URL + '/repos/' + owner + '/' + repo + '/commits?per_page=100&api_token=' + API_TOKEN
+                url: API_URL + '/repos/' + owner + '/' + repo + '/commits?per_page=100&access_token=' + API_TOKEN
               }).then(function(data) {
                 repository.setCommits(data);
-                
+
                 return repository;
               });
             });

@@ -33,7 +33,7 @@ var app = app || {};
         };
 
         this.onselect = function(item) {
-          m.route('/stats/' + item.fullName);
+          m.route('/repo/' + item.fullName);
         };
       }
     },

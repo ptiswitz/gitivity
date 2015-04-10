@@ -1,3 +1,4 @@
+$bg-contributors-item: $grey-dark-one;
 $txt-contributors-heading: $green-medium-one;
 $size-contributors-item: 180px 180px;
 
@@ -10,6 +11,7 @@ $size-contributors-item: 180px 180px;
 
   figure {
     position: relative;
+    background-color: $bg-contributors-item;
     border-radius: 50%;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     overflow: hidden;

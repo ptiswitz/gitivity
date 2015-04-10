@@ -44,9 +44,12 @@ var app = app || {};
           m('h3', vm.repository.description),
           m('a.btn.btn-bookmark', 'Add to bookmark')
         ]),
-        vm.repositoryTimeline.view(),
+        m('section.activity', [
+          m('h2', 'Activity'),
+          vm.repositoryTimeline.view()
+        ]),
         m('section.contributors', [
-          m('h2', 'Contributeurs'),
+          m('h2', 'Contributors'),
           m('div.container', [
             _.map(vm.repository.getActivityByContributor(), function(user) {
               return m('figure', [
