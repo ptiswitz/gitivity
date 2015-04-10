@@ -25,7 +25,8 @@ var app = app || {};
             }
 
             that.repository = repository;
-            that.repositoryTimeline = new app.timeline(that.repository.getActivity());
+            that.repositoryTimeline = new app.chart(that.repository.getActivityChartData());
+            that.repositoryContributorsImpact = new app.chart(that.repository.getActivityByContributorChartData());
           });
         }
 
@@ -45,8 +46,12 @@ var app = app || {};
           m('a.btn.btn-bookmark', 'Add to bookmark')
         ]),
         m('section.activity', [
-          m('h2', 'Activity'),
+          m('h2', 'Global activity'),
           vm.repositoryTimeline.view()
+        ]),
+        m('section.activity.contributors-impact', [
+          m('h2', 'Contributors impact'),
+          vm.repositoryContributorsImpact.view()
         ]),
         m('section.contributors', [
           m('h2', 'Contributors'),

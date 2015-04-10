@@ -1,8 +1,10 @@
-$bd-activity: $red-medium-one;
+$bd-activity: $grey-dark-one;
+$bd-activity-impact: $grey-dark-one;
 $txt-activity-heading: $green-medium-one;
 
 .activity {
   position: relative;
+  margin-bottom: 40px;
 
   &:after {
     position: absolute;
@@ -13,6 +15,12 @@ $txt-activity-heading: $green-medium-one;
     border-bottom: 5px solid $bd-activity;
     width: 100%;
     height: 0;
+  }
+
+  &.contributors-impact {
+    &:after {
+      border-bottom-color: $bd-activity-impact;
+    }
   }
 
   > h2 {

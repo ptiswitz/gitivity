@@ -72,5 +72,106 @@ app.models = app.models || {};
             .value();
   };
 
+  Repository.prototype.getActivityChartData = function() {
+    var data = this.getActivity();
+
+    return {
+        chart: {
+            type: 'area',
+        },
+
+        colors: ['#2C3E50'],
+
+        legend: {
+            enabled: false
+        },
+
+        yAxis: {
+          title: {
+            text: null
+          },
+          labels: {
+            enabled: false
+          },
+          gridLineWidth: 0
+        },
+
+        xAxis: {
+          type: 'datetime',
+          labels: {
+            enabled: false
+          },
+          lineWidth: 0,
+          tickWidth: 0
+        },
+
+        tooltip: {
+          formatter: function() {
+            var date = new Date(this.x);
+            return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + '<br/><strong>' + this.y + ' commits</strong>';
+          },
+          useHTML: true
+        },
+
+        series: [{
+            data: _.chain(data).groupBy(function(val, key) {
+              return key.substring(0, 10);
+            }).map(function(values, date) {
+
+                return [Date.parse(date), _.reduce(values, function(sum, n) {
+                  return sum + n;
+                })];
+              }).value()
+        }]
+    };
+  };
+
+  Repository.prototype.getActivityByContributorChartData = function() {
+    var data = this.getActivityByContributor();
+
+    return {
+        chart: {
+          type: 'treemap'
+        },
+
+        colorAxis: {
+          minColor: '#ECF0F1',
+          maxColor: '#34495E'
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+          treemap: {
+            borderWidth: 0,
+            dataLabels: {
+              style: {
+                textShadow: 'none'
+              }
+            }
+          }
+        },
+
+        tooltip: {
+          pointFormat: '<strong>{point.value} commits</strong>',
+          useHTML: true
+        },
+
+        series: [{
+          data: _.chain(data).filter(function(contributor) {
+            return contributor.contributionsToActivity > 0;
+          }).map(function(contributor) {
+            return {
+              name: contributor.login,
+              value: contributor.contributionsToActivity,
+              colorValue: contributor.contributionsToActivity
+            };
+          }).value()
+        }]
+    };
+  };
+
   app.models.repository = Repository;
 })(app);
