@@ -1,0 +1,10 @@
+$txt-infos-title: $white-medium-one;
+
+.infos {
+  > h2 {
+    color: $txt-infos-title;
+    font-family: $lato;
+    font-size: modular-scale(5);
+    text-align: center;
+  }
+}

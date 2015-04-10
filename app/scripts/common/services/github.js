@@ -5,7 +5,7 @@ app.services = app.services || {};
   'use strict';
 
   var API_URL = 'https://api.github.com',
-      API_TOKEN = '181b79075eac95ecd7f2383ad4f0b846c632d417',
+      API_TOKEN = 'e68d6962882e4cb3eeceb4bc1a2ccbf2ddff4464',
       github = {
         search: function(term) {
           return m.request({

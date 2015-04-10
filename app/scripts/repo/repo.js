@@ -42,7 +42,6 @@ var app = app || {};
         }),
         m('section.infos', [
           m('h2', vm.repository.fullName),
-          m('h3', vm.repository.description),
           m('a.btn.btn-bookmark', 'Add to bookmark')
         ]),
         m('section.activity', [
