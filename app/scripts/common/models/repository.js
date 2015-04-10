@@ -118,10 +118,13 @@ app.models = app.models || {};
               return key.substring(0, 10);
             }).map(function(values, date) {
 
-                return [Date.parse(date), _.reduce(values, function(sum, n) {
-                  return sum + n;
-                })];
-              }).value()
+                return {
+                  date: Date.parse(date),
+                  value: _.reduce(values, function(sum, n) {
+                    return sum + n;
+                  })
+                };
+              }).sortByOrder('date').map(_.values).value()
         }]
     };
   };

@@ -48,7 +48,11 @@ var app = app || {};
           m('div', {
             class: 'container'
           }, [
-            m('h1', [
+            m('h1', {
+              onclick: function() {
+                m.route('/search/');
+              }
+            }, [
               m('span', {
                 class: 'icon-github'
               })

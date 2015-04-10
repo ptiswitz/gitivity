@@ -1,0 +1,9 @@
+$bg-infos-btn-hover: $red-dark-one;
+
+.infos {
+  > .btn {
+    &:hover {
+      background-color: $bg-infos-btn-hover;
+    }
+  }
+}

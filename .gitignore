@@ -3,3 +3,4 @@
 node_modules
 app/components
 app/styles/css
+app/scripts/common/services/github.token.js

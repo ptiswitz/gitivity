@@ -1,10 +1,29 @@
+$bg-infos-btn: $red-medium-one;
 $txt-infos-title: $white-medium-one;
+$txt-infos-btn: $white-medium-one;
 
 .infos {
+  margin-bottom: 100px;
+  text-align: center;
+
   > h2 {
     color: $txt-infos-title;
     font-family: $lato;
     font-size: modular-scale(5);
-    text-align: center;
+  }
+
+  > .btn {
+    @include border-top-radius(5px);
+    @include border-bottom-radius(5px);
+    background-color: $bg-infos-btn;
+    color: $txt-infos-btn;
+    cursor: pointer;
+    font-size: modular-scale(1);
+    padding: 10px 20px;
+    text-decoration: none;
+
+    > .icon {
+      margin-left: 10px;
+    }
   }
 }

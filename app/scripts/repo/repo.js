@@ -42,7 +42,36 @@ var app = app || {};
         }),
         m('section.infos', [
           m('h2', vm.repository.fullName),
-          m('a.btn.btn-bookmark', 'Add to bookmark')
+          m('a.btn.btn-bookmark', {
+            config: function(element) {
+              element.title = 'Gitivity: ' + vm.repository.fullName;
+              element.href = document.location.href;
+              element.rel = 'sidebar';
+            },
+            onclick: function(event) {
+              var bookmarkURL = this.href,
+                  bookmarkTitle = this.title;
+
+              if (window.external && 'AddFavorite' in window.external) {
+            		window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+            	  return false;
+              }
+            	else if (window.sidebar && 'addPanel' in window.sidebar) {
+            		window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+            	  return false;
+              }
+            	else if (window.opera || window.sidebar) {
+                return true;
+            	}
+            	else {
+            	   alert('Your browser doesn\'t support javascript boomarking.');
+              }
+            },
+            rel: 'sidebar'
+          }, [
+            'Add to bookmark',
+            m('span.icon.icon-bookmark')
+          ])
         ]),
         m('section.activity', [
           m('h2', 'Global activity'),
